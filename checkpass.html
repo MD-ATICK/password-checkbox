@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="checkpass.css" />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
+  </head>
+  <body>
+    <!-- 
+        <i class="uil uil-eye"></i>
+        <i class="uil uil-eye-slash"></i>
+     -->
+
+    <div class="container">
+      <div class="input">
+        <div class="icontext">
+          <input type="password" class="atickhea cretefrist" required/>
+          <label for="text" class="atick">Create Password</label>
+        </div>
+        <!-- <i class="uil uil-eye-slash"></i> -->
+      </div>
+      <form action="">
+      <div class="input">
+        <div class="icontext">
+          <input type="password" class="atickhea ceretesec" disabled required />
+          <label for="" class="atick">Comfirm password</label>
+        </div>
+        <i class="uil uil-eye" id="eyeopen"></i>
+        <!-- <i class="uil uil-eye-slash"></i> -->
+      </div>
+      <span class="atikvai"># Use at lastest 8 Carecters</span>
+      <button type="submit" class="btn" disabled>Check</button>
+    </div>
+  </form>
+    <script>
+        const eyeopen = document.querySelector("#eyeopen")
+        const input = document.querySelector(".atickhea") 
+        const text = document.querySelectorAll(".atick")
+        const type = input.value
+        const cretefrist = document.querySelector(".cretefrist")
+        const ceretesec = document.querySelector(".ceretesec")
+        eyeopen.addEventListener("click" , () => {
+            // for(let x of text){
+            //   x.classList.add("atickeditz")
+            // }
+             
+
+           if( (cretefrist.type === "password") && (ceretesec.type === "password")){
+            ceretesec.type = "text"
+            cretefrist.type = "text"
+            }else{
+              ceretesec.type = "password"
+            cretefrist.type = "password"
+            }
+        })
+
+        const paltu = cretefrist.value
+        const paltu2 = ceretesec.value
+        const btn = document.querySelector(".btn")
+        const atikvai = document.querySelector(".atikvai")
+        
+
+        
+        // cretefrist.addEventListener("click" , () =>{
+        //   if (cretefrist.value === "" && ceretesec.value === "") {
+        //     cretefrist.classList.add("janina")
+        //   }else{
+        //     cretefrist.classList.remove("janina")
+        //   }
+        // })
+        btn.addEventListener("click" , (e) => {
+          e.preventDefault()
+          if(cretefrist.value === ceretesec.value){
+            atikvai.innerText = "Password is Matched"
+            atikvai.style.color ="#00682d"
+          }else if(cretefrist.value != ceretesec.value) {
+            atikvai.innerText = "Password is not Matched"
+            atikvai.style.color ="#973700"
+          } 
+        })
+
+        cretefrist.addEventListener("input" , () => {
+          let valuecorrect = cretefrist.value.trim()
+          if (valuecorrect.length >= 8) {
+            ceretesec.removeAttribute("disabled")
+            btn.removeAttribute("disabled")
+            btn.classList.remove("hea")
+            ceretesec.classList.remove("hea")
+          }else{
+            ceretesec.setAttribute("disabled" , true)
+            btn.setAttribute("disabled" , true)
+            btn.classList.add("hea")
+            ceretesec.classList.add("hea")
+          }
+        })
+        
+        
+    </script>
+  </body>
+</html>
